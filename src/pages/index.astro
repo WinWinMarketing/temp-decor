@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import Introduction from '@/components/Introduction.astro';
+import DecorShowcase from '@/components/DecorShowcase.astro';
+import ServicesPreview from '@/components/ServicesPreview.astro';
+import FeaturedWork from '@/components/FeaturedWork.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import CTASection from '@/components/CTASection.astro';
+---
+
+<BaseLayout title="Temp Decor | Luxury Wedding & Home Décor">
+  <Hero />
+  <Introduction />
+  <DecorShowcase />
+  <ServicesPreview />
+  <FeaturedWork />
+  <Testimonials />
+  <CTASection />
+
+  <script>
+    import { initSectionAnimations } from '@/scripts/animations';
+
+    function init() {
+      initSectionAnimations();
+    }
+
+    document.addEventListener('astro:page-load', init);
+  </script>
+</BaseLayout>

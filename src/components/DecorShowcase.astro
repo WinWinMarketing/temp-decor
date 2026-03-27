@@ -1,0 +1,109 @@
+---
+const showcaseItems = [
+  {
+    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=80',
+    title: 'Luxury Reception Hall',
+    label: 'Elegant Decor',
+    description: 'Creating unforgettable wedding reception experiences with expertly designed decor that leaves clients overjoyed.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80',
+    title: 'Elegant and Chic',
+    label: 'Sophisticated Design',
+    description: 'Add a touch of elegance to your wedding reception tables with beautiful floral arrangements that create a stunning romantic atmosphere.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&q=80',
+    title: 'Beautiful Outdoor Ceremony',
+    label: 'Refined Decoration',
+    description: 'Celebrate amidst nature\'s beauty with a gorgeous outdoor wedding arch featuring a burst of colourful flowers, adding whimsy and romance to your special day.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=900&q=80',
+    title: 'Romantic Wedding Vibes',
+    label: 'Rich & Luxurious Ceremony Decor',
+    description: 'Indulge in luxury on your special day with stunning floral designs that exude elegance, adding opulence and romance to your celebration.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=80',
+    title: 'Every Detail is Magical',
+    label: 'Glamorous Decor',
+    description: 'Elevate your celebration with a stunning display of elegance, creating a breathtaking and unforgettable ambiance for your event.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&q=80',
+    title: 'Cultural Wedding Design',
+    label: 'Fashionable Cultural Celebration',
+    description: 'Custom cultural wedding designs that honour traditions with stunning decor. Let us create a meaningful celebration that is truly unforgettable.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&q=80',
+    title: 'The Most Stunning Decor',
+    label: 'Deluxe Decor',
+    description: 'Experience pure enchantment with the most stunning wedding decor — from exquisite floral arrangements to breathtaking lighting, every detail is meticulously crafted.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?w=900&q=80',
+    title: 'Dreamy Aisle Design',
+    label: 'Exquisite Bespoke Decor',
+    description: 'Create unforgettable wedding decor with beautiful arches, elegant draping, and stunning flowers. Our experts bring your vision to life.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=900&q=80',
+    title: 'Beautiful Floral Details',
+    label: 'Modern Luxury Decor',
+    description: 'Create a charming atmosphere with lovely centerpieces featuring crystal vases filled with fresh, delicate flowers that add a touch of elegance.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&q=80',
+    title: 'When Your Dreams Come True',
+    label: 'Luxe Wedding',
+    description: 'Transform your wedding into a fairytale with our beautiful designs, bringing a touch of whimsy and romance with stunning blooms and elegant accents.',
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-ivory" id="decor-showcase">
+  <div class="container">
+    <div class="text-center mb-16">
+      <p class="section-label mb-4" data-animate="fade-up">Our Designs</p>
+      <h2 class="font-heading text-h1 text-charcoal mb-4" data-animate="fade-up">
+        Moments We Love
+      </h2>
+      <p class="text-lead text-warm-gray max-w-2xl mx-auto" data-animate="fade-up">
+        Every project tells a unique story. Browse our collection of designs
+        that transform ordinary spaces into extraordinary experiences.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      {showcaseItems.map((item) => (
+        <a
+          href="/portfolio"
+          class="group block overflow-hidden rounded-2xl bg-cream"
+          data-animate="fade-up"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.title}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6 lg:p-8">
+            <span class="text-xs uppercase tracking-[0.2em] text-gold font-body font-semibold">
+              {item.label}
+            </span>
+            <h3 class="font-heading text-h3 text-charcoal mt-2 group-hover:text-gold transition-colors duration-300">
+              {item.title}
+            </h3>
+            <p class="text-sm text-warm-gray leading-relaxed mt-2">
+              {item.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PortfolioFilter from '@/components/PortfolioFilter.tsx';
+import { getAllProjects, getCategories } from '@/scripts/projects';
+
+const projects = getAllProjects();
+const categories = getCategories();
+
+const projectProps = projects.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  category: p.category,
+  excerpt: p.excerpt,
+  coverImage: p.coverImage,
+}));
+---
+
+<BaseLayout
+  title="Portfolio | Temp Decor"
+  description="Explore our portfolio of luxury wedding decor, home styling, and event design projects across Toronto and the GTA."
+>
+  <section class="pt-32 pb-12 bg-ivory">
+    <div class="container text-center">
+      <p class="section-label mb-4" data-animate="fade-up">Our Work</p>
+      <h1 class="font-heading text-h1 text-charcoal mb-6" data-animate="fade-up">
+        Portfolio
+      </h1>
+      <p class="text-lead text-warm-gray max-w-2xl mx-auto" data-animate="fade-up">
+        Every project tells a unique story. Browse our collection of weddings,
+        home transformations, and celebrations we've had the privilege to design.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 pb-24 bg-ivory">
+    <div class="container">
+      <PortfolioFilter client:load projects={projectProps} categories={categories} />
+    </div>
+  </section>
+
+  <script>
+    import { initSectionAnimations } from '@/scripts/animations';
+    document.addEventListener('astro:page-load', () => initSectionAnimations());
+  </script>
+</BaseLayout>

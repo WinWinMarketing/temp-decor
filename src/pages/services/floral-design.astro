@@ -1,0 +1,34 @@
+---
+import ServicePageTemplate from '@/components/ServicePageTemplate.astro';
+
+const faqs = [
+  { question: 'Do you use real or silk flowers?', answer: 'We primarily work with fresh flowers for their natural beauty and fragrance. However, we also offer premium silk and preserved flower options for installations that need to last beyond a single event.' },
+  { question: 'Can I request specific flowers?', answer: 'Of course. We work with your preferences and seasonal availability to source the perfect blooms. If a specific variety is out of season, we will suggest beautiful alternatives that achieve the same look.' },
+  { question: 'How far in advance should I order?', answer: 'For weddings and large events, we recommend 3-6 months advance booking. For smaller arrangements and home floral subscriptions, 1-2 weeks notice is typically sufficient.' },
+  { question: 'Do you offer floral subscriptions for homes or offices?', answer: 'Yes. Our weekly and bi-weekly floral subscription service delivers fresh, seasonally curated arrangements to homes and offices across the GTA.' },
+];
+---
+
+<ServicePageTemplate
+  title="Floral Design"
+  description="Custom floral design services in Toronto — bridal bouquets, wedding centerpieces, floral installations, and seasonal arrangements crafted with the freshest blooms."
+  heroImage="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1920&q=80"
+  intro="Flowers have the power to transform any space and any moment. Our floral designers craft arrangements that go beyond the ordinary — from architectural installations that command a room to delicate bouquets that capture a bride's personality in petals."
+  features={[
+    'Custom bridal bouquets and bridesmaid bouquets',
+    'Ceremony floral installations and arches',
+    'Reception centerpieces and table garlands',
+    'Boutonnieres and corsages',
+    'Grand-scale floral installations',
+    'Corporate and residential arrangements',
+    'Seasonal floral subscriptions',
+    'Preserved and dried floral art',
+  ]}
+  galleryImages={[
+    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=900&q=80',
+    'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80',
+    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80',
+    'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80',
+  ]}
+  faqs={faqs}
+/>

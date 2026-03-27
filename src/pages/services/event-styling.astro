@@ -1,0 +1,34 @@
+---
+import ServicePageTemplate from '@/components/ServicePageTemplate.astro';
+
+const faqs = [
+  { question: 'What types of events do you style?', answer: 'We style corporate galas, milestone birthdays, anniversaries, baby showers, bridal showers, cultural celebrations, holiday parties, and product launch events.' },
+  { question: 'Can you accommodate themed events?', answer: 'Absolutely. Themed events are our specialty. From Gatsby-inspired soirées to winter wonderland galas, we bring creative concepts to life with custom props, installations, and cohesive design.' },
+  { question: 'Do you work with corporate clients?', answer: 'Yes. We regularly work with Toronto businesses for annual galas, awards ceremonies, client appreciation events, and team celebrations. We understand the balance between professional and festive.' },
+  { question: 'Do you handle rentals?', answer: 'We coordinate all rental needs — furniture, linens, glassware, lighting equipment, and specialty items. Everything is included in your quote so there are no surprises.' },
+];
+---
+
+<ServicePageTemplate
+  title="Event Styling"
+  description="Professional event styling and decoration services in Toronto — corporate galas, milestone celebrations, and cultural events designed to impress."
+  heroImage="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80"
+  intro="Every event is an opportunity to create something memorable. Whether it's a corporate gala for 500 or an intimate birthday for 30, we approach each project with the same commitment to excellence, creativity, and flawless execution."
+  features={[
+    'Corporate gala and awards ceremony design',
+    'Milestone birthday celebrations',
+    'Baby showers and bridal showers',
+    'Cultural and religious celebrations',
+    'Holiday and seasonal event styling',
+    'Themed event design and execution',
+    'Venue selection assistance',
+    'Full rental coordination',
+  ]}
+  galleryImages={[
+    'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&q=80',
+    'https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?w=600&q=80',
+    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80',
+    'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80',
+  ]}
+  faqs={faqs}
+/>

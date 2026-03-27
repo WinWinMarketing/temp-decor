@@ -1,0 +1,129 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const values = [
+  { title: 'Craftsmanship', description: 'Every arrangement, every fabric choice, every lighting angle is deliberate. We never compromise on the details that make the difference.' },
+  { title: 'Collaboration', description: 'Your vision is our starting point. We listen deeply, then bring our expertise to elevate your ideas beyond what you imagined possible.' },
+  { title: 'Authenticity', description: 'No two projects should ever look the same. We design for you — your story, your style, your celebration — not for a template.' },
+  { title: 'Excellence', description: 'From the first consultation to the final reveal, we hold ourselves to the highest standard. Nothing leaves our hands unless it is truly exceptional.' },
+];
+---
+
+<BaseLayout
+  title="About | Temp Decor"
+  description="Learn about Temp Decor — our story, values, and the passionate team behind Toronto's premier luxury wedding and home decoration studio."
+>
+  <section class="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&q=80"
+      alt="Elegant wedding reception decorated by Temp Decor"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent"></div>
+    <div class="container relative z-10 pb-12">
+      <p class="section-label text-gold-light mb-3">Our Story</p>
+      <h1 class="font-heading text-h1 text-ivory">About Temp Decor</h1>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-ivory">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <p class="section-label mb-4" data-animate="fade-up">Who We Are</p>
+          <h2 class="font-heading text-h2 text-charcoal mb-6" data-animate="fade-up">
+            Where Passion Meets Precision
+          </h2>
+          <div class="space-y-4 text-warm-gray leading-relaxed" data-animate="fade-up">
+            <p>
+              Founded in Toronto over a decade ago, Temp Decor began with a simple belief: every space
+              has the potential to tell a beautiful story. What started as a passion for wedding florals
+              has grown into a full-service luxury decoration studio serving the Greater Toronto Area
+              and beyond.
+            </p>
+            <p>
+              Our team of designers, stylists, and craftspeople brings together decades of combined experience
+              in event design, interior styling, and floral artistry. We have had the privilege of transforming
+              hundreds of weddings, homes, and celebrations — each one as unique as the clients we serve.
+            </p>
+            <p>
+              We work with discerning clients who understand that great design is not a luxury — it is a necessity.
+              Clients who appreciate that the difference between good and extraordinary lies in the details.
+              If that sounds like you, we would love to create something remarkable together.
+            </p>
+          </div>
+        </div>
+        <div class="relative" data-animate="fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"
+            alt="White roses and elegant floral arrangement"
+            class="rounded-2xl w-full aspect-[3/4] object-cover"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-gold text-ivory p-6 rounded-xl hidden lg:block">
+            <span class="font-heading text-display block leading-none">12+</span>
+            <span class="text-sm font-body mt-1 block uppercase tracking-wider">Years of Excellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-cream">
+    <div class="container">
+      <div class="text-center mb-16">
+        <p class="section-label mb-4" data-animate="fade-up">Our Values</p>
+        <h2 class="font-heading text-h2 text-charcoal" data-animate="fade-up">
+          What Guides Us
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-animate="stagger">
+        {values.map((value) => (
+          <div class="bg-ivory rounded-2xl p-8">
+            <h3 class="font-heading text-h4 text-charcoal mb-3">{value.title}</h3>
+            <p class="text-sm text-warm-gray leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-ivory">
+    <div class="container-narrow text-center">
+      <blockquote class="relative" data-animate="fade-up">
+        <svg class="w-12 h-12 text-gold/20 mx-auto mb-6" fill="currentColor" viewBox="0 0 32 32">
+          <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z" />
+        </svg>
+        <p class="font-heading text-h3 text-charcoal italic leading-relaxed">
+          "We don't just decorate spaces — we create atmospheres where memories are born,
+          stories unfold, and moments become unforgettable."
+        </p>
+        <footer class="mt-6">
+          <span class="text-sm font-body text-warm-gray uppercase tracking-wider">— Temp Decor Team</span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="py-16 bg-charcoal text-center">
+    <div class="container">
+      <h2 class="font-heading text-h2 text-ivory mb-4" data-animate="fade-up">Let's Work Together</h2>
+      <p class="text-ivory/60 mb-8 font-body max-w-lg mx-auto" data-animate="fade-up">
+        Ready to create something extraordinary? We would love to hear about your project.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium rounded-sm hover:bg-gold-light transition-all duration-500"
+        data-animate="fade-up"
+      >
+        Start a Conversation
+      </a>
+    </div>
+  </section>
+
+  <script>
+    import { initSectionAnimations } from '@/scripts/animations';
+    document.addEventListener('astro:page-load', () => initSectionAnimations());
+  </script>
+</BaseLayout>

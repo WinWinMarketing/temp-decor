@@ -1,0 +1,126 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from './JsonLd.astro';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  heroImage: string;
+  intro: string;
+  features: string[];
+  galleryImages: string[];
+  faqs: FAQ[];
+}
+
+const { title, description, heroImage, intro, features, galleryImages, faqs } = Astro.props;
+
+const faqSchema = faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+} : null;
+---
+
+<BaseLayout title={`${title} | Temp Decor`} description={description}>
+  {faqSchema && <JsonLd data={faqSchema} slot="head" />}
+  <section class="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
+    <img src={heroImage} alt={title} class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent"></div>
+    <div class="container relative z-10 pb-12">
+      <p class="section-label text-gold-light mb-3">Our Services</p>
+      <h1 class="font-heading text-h1 text-ivory">{title}</h1>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-ivory">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-lead text-warm-gray leading-relaxed mb-8" data-animate="fade-up">{intro}</p>
+          <ul class="space-y-4" data-animate="stagger">
+            {features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-gold mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-charcoal">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-8 py-3.5 mt-8 bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium rounded-sm hover:bg-gold-light transition-all duration-500 group"
+            data-magnetic
+          >
+            <span>Request a Consultation</span>
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 7h12M8 2l5 5-5 5" />
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4" data-animate="stagger">
+          {galleryImages.slice(0, 4).map((img, i) => (
+            <div class:list={['overflow-hidden rounded-xl', i === 0 ? 'col-span-2 aspect-[16/9]' : 'aspect-square']}>
+              <img src={img} alt={`${title} example ${i + 1}`} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {faqs.length > 0 && (
+    <section class="py-16 lg:py-24 bg-cream">
+      <div class="container-narrow">
+        <h2 class="font-heading text-h2 text-charcoal text-center mb-12" data-animate="fade-up">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-4" data-animate="stagger">
+          {faqs.map((faq) => (
+            <details class="group bg-ivory rounded-xl p-6 cursor-pointer">
+              <summary class="flex items-center justify-between font-body font-medium text-charcoal list-none">
+                <span>{faq.question}</span>
+                <svg class="w-5 h-5 text-gold transition-transform duration-300 group-open:rotate-45 flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </summary>
+              <p class="mt-4 text-warm-gray leading-relaxed text-sm">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16 bg-charcoal text-center">
+    <div class="container">
+      <h2 class="font-heading text-h2 text-ivory mb-4">Ready to Get Started?</h2>
+      <p class="text-ivory/60 mb-8 font-body max-w-lg mx-auto">
+        Contact us today for a free consultation. Let's bring your vision to life.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium rounded-sm hover:bg-gold-light transition-all duration-500"
+      >
+        Get a Free Quote
+      </a>
+    </div>
+  </section>
+
+  <script>
+    import { initSectionAnimations } from '@/scripts/animations';
+    document.addEventListener('astro:page-load', () => initSectionAnimations());
+  </script>
+</BaseLayout>

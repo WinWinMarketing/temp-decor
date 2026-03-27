@@ -1,0 +1,17 @@
+---
+import TestimonialCarousel from './TestimonialCarousel.tsx';
+---
+
+<section class="py-24 lg:py-32 bg-ivory" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-16">
+      <p class="section-label mb-4" data-animate="fade-up">Testimonials</p>
+      <h2 class="font-heading text-h1 text-charcoal" data-animate="fade-up">
+        Voices of Our Clients
+      </h2>
+    </div>
+    <div data-animate="fade-up">
+      <TestimonialCarousel client:visible />
+    </div>
+  </div>
+</section>

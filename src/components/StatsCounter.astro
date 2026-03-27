@@ -1,0 +1,34 @@
+---
+const stats = [
+  { value: 12, suffix: '+', label: 'Years of Experience' },
+  { value: 350, suffix: '+', label: 'Events Completed' },
+  { value: 98, suffix: '%', label: 'Happy Clients' },
+  { value: 15, suffix: '+', label: 'Cities Served' },
+];
+---
+
+<section class="py-20 lg:py-24 bg-charcoal" id="stats">
+  <div class="container">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+      {stats.map((stat, i) => (
+        <div class="text-center relative">
+          <div class="flex items-baseline justify-center gap-1">
+            <span
+              class="font-heading text-display text-ivory"
+              data-counter={stat.value}
+            >
+              0
+            </span>
+            <span class="font-heading text-h2 text-gold">{stat.suffix}</span>
+          </div>
+          <p class="text-sm text-ivory/50 mt-2 font-body uppercase tracking-[0.1em]">
+            {stat.label}
+          </p>
+          {i < stats.length - 1 && (
+            <div class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-ivory/10"></div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

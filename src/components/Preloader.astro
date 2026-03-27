@@ -1,0 +1,72 @@
+---
+const brandName = 'NITHIY';
+const letters = brandName.split('');
+---
+
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="flex items-center gap-1">
+    {letters.map((letter) => (
+      <span class="preloader__letter font-heading text-display tracking-wider">
+        <span>{letter}</span>
+      </span>
+    ))}
+  </div>
+  <div class="mt-6 text-sm font-body tracking-[0.3em] uppercase text-warm-gray" id="preloader-counter">
+    0%
+  </div>
+  <div class="preloader__bar">
+    <div class="preloader__bar-fill" id="preloader-bar"></div>
+  </div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+
+    const letterSpans = preloader.querySelectorAll('.preloader__letter span');
+    const counter = document.getElementById('preloader-counter');
+    const bar = document.getElementById('preloader-bar');
+
+    document.body.style.overflow = 'hidden';
+
+    gsap.set(letterSpans, { y: '120%' });
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        document.body.style.overflow = '';
+        preloader.remove();
+      },
+    });
+
+    tl.to(letterSpans, {
+      y: '0%',
+      duration: 0.8,
+      stagger: 0.06,
+      ease: 'power3.out',
+      delay: 0.3,
+    });
+
+    const obj = { val: 0 };
+    tl.to(obj, {
+      val: 100,
+      duration: 1.5,
+      ease: 'power2.inOut',
+      onUpdate() {
+        if (counter) counter.textContent = Math.round(obj.val) + '%';
+        if (bar) bar.style.width = obj.val + '%';
+      },
+    }, '-=0.4');
+
+    tl.to(preloader, {
+      yPercent: -100,
+      duration: 0.8,
+      ease: 'power4.inOut',
+      delay: 0.2,
+    });
+  }
+
+  initPreloader();
+</script>

@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Wedding Decor',
+    description: 'From breathtaking arches to elegant tablescapes, we create wedding environments that leave lasting impressions on you and your guests.',
+    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80',
+    href: '/services/wedding-decor',
+    icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>',
+  },
+  {
+    title: 'Home Decor',
+    description: 'Transform your living spaces with curated design that blends comfort, beauty, and your personal aesthetic into every room.',
+    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80',
+    href: '/services/home-decor',
+    icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>',
+  },
+  {
+    title: 'Event Styling',
+    description: 'Corporate galas, milestone birthdays, and cultural celebrations — styled with precision and creative flair that captivates every guest.',
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80',
+    href: '/services/event-styling',
+    icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>',
+  },
+  {
+    title: 'Floral Design',
+    description: 'Custom bridal bouquets, centerpieces, and floral installations crafted with the freshest seasonal blooms available.',
+    image: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80',
+    href: '/services/floral-design',
+    icon: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582"/></svg>',
+  },
+];
+---
+
+<BaseLayout
+  title="Services | Temp Decor"
+  description="Explore our luxury decoration services — wedding decor, home styling, event design, and custom floral arrangements in Toronto and the GTA."
+>
+  <section class="pt-32 pb-16 bg-ivory">
+    <div class="container text-center">
+      <p class="section-label mb-4" data-animate="fade-up">What We Offer</p>
+      <h1 class="font-heading text-h1 text-charcoal mb-6" data-animate="fade-up">
+        Our Services
+      </h1>
+      <p class="text-lead text-warm-gray max-w-2xl mx-auto" data-animate="fade-up">
+        Every project begins with your vision. We bring expertise, creativity, and meticulous
+        attention to detail to transform spaces into extraordinary experiences.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 pb-24 bg-ivory">
+    <div class="container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-animate="stagger">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-cream">
+    <div class="container-narrow text-center">
+      <h2 class="font-heading text-h2 text-charcoal mb-6" data-animate="fade-up">Our Process</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12" data-animate="stagger">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4">
+            <span class="font-heading text-h3 text-gold">01</span>
+          </div>
+          <h3 class="font-heading text-h4 text-charcoal mb-2">Consultation</h3>
+          <p class="text-sm text-warm-gray leading-relaxed">
+            We listen to your vision, understand your style, and discuss every detail to ensure alignment.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4">
+            <span class="font-heading text-h3 text-gold">02</span>
+          </div>
+          <h3 class="font-heading text-h4 text-charcoal mb-2">Design</h3>
+          <p class="text-sm text-warm-gray leading-relaxed">
+            Our team creates detailed concepts, mood boards, and layouts tailored to your space and budget.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4">
+            <span class="font-heading text-h3 text-gold">03</span>
+          </div>
+          <h3 class="font-heading text-h4 text-charcoal mb-2">Execution</h3>
+          <p class="text-sm text-warm-gray leading-relaxed">
+            We handle everything — sourcing, setup, and styling — so you can simply enjoy the moment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initSectionAnimations } from '@/scripts/animations';
+    document.addEventListener('astro:page-load', () => initSectionAnimations());
+  </script>
+</BaseLayout>

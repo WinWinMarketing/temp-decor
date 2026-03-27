@@ -1,0 +1,54 @@
+---
+---
+<div class="custom-cursor" id="custom-cursor" aria-hidden="true"></div>
+<div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
+
+<script>
+  function initCursor() {
+    const cursor = document.getElementById('custom-cursor');
+    const glow = document.getElementById('ambient-glow');
+    if (!cursor || !glow) return;
+
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouchDevice) return;
+
+    document.documentElement.style.cursor = 'none';
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      glow.style.left = mouseX + 'px';
+      glow.style.top = mouseY + 'px';
+    });
+
+    function animateCursor() {
+      const dx = mouseX - cursorX;
+      const dy = mouseY - cursorY;
+      cursorX += dx * 0.15;
+      cursorY += dy * 0.15;
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    const hoverTargets = 'a, button, [data-magnetic], input, textarea, select, [role="button"]';
+
+    document.addEventListener('mouseover', (e) => {
+      const target = (e.target as Element).closest(hoverTargets);
+      if (target) cursor.classList.add('cursor--hover');
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const target = (e.target as Element).closest(hoverTargets);
+      if (target) cursor.classList.remove('cursor--hover');
+    });
+  }
+
+  document.addEventListener('astro:page-load', initCursor);
+</script>

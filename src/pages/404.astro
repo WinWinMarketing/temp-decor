@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found | Temp Decor">
+  <section class="min-h-[70vh] flex items-center justify-center bg-ivory">
+    <div class="container text-center">
+      <span class="font-heading text-[8rem] lg:text-[12rem] text-gold/20 leading-none block">404</span>
+      <h1 class="font-heading text-h1 text-charcoal mt-4 mb-4">Page Not Found</h1>
+      <p class="text-warm-gray mb-8 max-w-md mx-auto">
+        The page you're looking for doesn't exist or has been moved. Let's get you back to somewhere beautiful.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium rounded-sm hover:bg-gold-light transition-all duration-500 group"
+      >
+        <svg class="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" fill="none" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.5">
+          <path d="M13 7H1M6 2L1 7l5 5" />
+        </svg>
+        <span>Back to Home</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
