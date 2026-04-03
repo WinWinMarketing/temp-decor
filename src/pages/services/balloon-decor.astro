@@ -1,0 +1,35 @@
+---
+import ServicePageTemplate from '@/components/ServicePageTemplate.astro';
+
+const faqs = [
+  { question: 'How long do balloon installations last?', answer: 'Air-filled balloon installations typically last 3-5 days indoors. Helium-filled balloons last 8-12 hours for standard latex and up to 2-3 days for foil balloons. We use Hi-Float treatment on helium balloons to extend their float time.' },
+  { question: 'Do you use latex or foil balloons?', answer: 'We work with both. Latex balloons are great for organic garlands, arches, and large-scale installations. Foil balloons are perfect for custom shapes, numbers, letters, and themed designs. We will recommend the best option for your event.' },
+  { question: 'Can balloon decor be used outdoors?', answer: 'Yes, but with some considerations. We secure outdoor installations carefully and recommend air-filled designs over helium for windy conditions. We also avoid direct sunlight exposure where possible, as heat can shorten balloon life.' },
+  { question: 'How far in advance should I book balloon decor?', answer: 'We recommend booking 2-3 weeks in advance for standard installations. For large-scale or custom designs, 4-6 weeks gives us time to source specialty balloons and plan the layout to perfection.' },
+  { question: 'Can you match specific colour schemes or branding?', answer: 'Absolutely. We work with a wide palette of balloon colours and can match your event theme, brand colours, or any specific colour scheme you have in mind. Custom printed balloons are also available for corporate events.' },
+];
+---
+
+<ServicePageTemplate
+  title="Balloon Decor"
+  description="Professional balloon decoration services in Toronto and the GTA — garlands, arches, columns, organic installations, and custom balloon art by Sai Decoration."
+  heroImage="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1920&q=80"
+  intro="Balloons have the power to transform any space into a celebration. Our balloon artists create stunning installations — from elegant organic garlands to show-stopping arches and columns — that add colour, texture, and excitement to weddings, birthdays, corporate events, and every occasion in between."
+  features={[
+    'Balloon garland backdrops',
+    'Organic balloon arches',
+    'Balloon columns and towers',
+    'Helium bouquets and centrepieces',
+    'Custom number and letter balloons',
+    'Balloon ceiling installations',
+    'Themed balloon colour schemes',
+    'Corporate branding balloon displays',
+  ]}
+  galleryImages={[
+    'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=900&q=80',
+    'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=600&q=80',
+    'https://images.unsplash.com/photo-1496024840928-4c417adf211d?w=600&q=80',
+    'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80',
+  ]}
+  faqs={faqs}
+/>

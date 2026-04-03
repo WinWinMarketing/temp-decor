@@ -10,24 +10,24 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: 'Temp Decor transformed our wedding into a fairy tale. Every detail was absolutely perfect — from the floral arch to the candlelit centerpieces. Our guests are still talking about it.',
+    quote: 'Sai Decoration transformed our wedding into a fairy tale. Every detail was absolutely perfect — from the floral arch to the candlelit centerpieces. Our guests are still talking about it.',
     name: 'Sarah & James Mitchell',
     role: 'Wedding at The Grand Estate',
   },
   {
-    quote: "Working with the Temp Decor team was a dream. They understood our vision instantly and elevated it beyond anything we imagined. The attention to detail is unmatched.",
+    quote: "Working with the Sai Decoration team was a dream. They understood our vision instantly and elevated it beyond anything we imagined. The attention to detail is unmatched.",
     name: 'Priya & Arjun Patel',
     role: 'Cultural Wedding Celebration',
   },
   {
-    quote: 'Our home has never looked more beautiful. The team completely reimagined our living and dining spaces with a warmth and elegance that feels both luxurious and inviting.',
+    quote: 'My son\'s Sesame Street birthday was absolutely incredible! The balloon garland, the custom cutouts, and all the themed props — the kids and parents were blown away. Worth every penny.',
     name: 'Rebecca Chen',
-    role: 'Home Interior Styling',
+    role: 'Themed Birthday Party',
   },
   {
-    quote: "The corporate gala was stunning. Temp Decor created an atmosphere that perfectly balanced professionalism with creative flair. Every executive was thoroughly impressed.",
+    quote: "The balloon installation for our daughter's first birthday was show-stopping. Sai Decoration created a gorgeous organic arch that became the centrepiece of the entire party. Amazing work!",
     name: 'Michael Torres',
-    role: 'Annual Charity Gala',
+    role: 'First Birthday Balloon Decor',
   },
   {
     quote: 'From our first consultation to the final reveal, the experience was seamless. They truly listen to what you want and then make it ten times better.',

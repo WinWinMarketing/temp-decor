@@ -4,11 +4,11 @@ import JsonLd from './JsonLd.astro';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'EventPlanner',
-  name: 'Temp Decor',
-  image: 'https://tempdecor.com/og-default.jpg',
-  url: 'https://tempdecor.com',
+  name: 'Sai Decoration Inc.',
+  image: 'https://winwinmarketing.github.io/temp-decor/logo.png',
+  url: 'https://winwinmarketing.github.io/temp-decor',
   telephone: '+14161234567',
-  email: 'hello@tempdecor.com',
+  email: 'hello@saidecoration.com',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Toronto',
@@ -36,11 +36,11 @@ const schema = {
   ],
   priceRange: '$$$',
   sameAs: [
-    'https://instagram.com/tempdecor',
-    'https://facebook.com/tempdecor',
-    'https://pinterest.com/tempdecor',
+    'https://instagram.com/sai_decoration',
+    'https://facebook.com/saidecoration',
+    'https://pinterest.com/saidecoration',
   ],
-  description: 'Premium wedding and home decoration services in Toronto. Luxury floral arrangements, event styling, and bespoke interior design.',
+  description: 'Premium wedding, birthday party, and event decoration services in Toronto. Balloon decor, themed party styling, and custom event design.',
   areaServed: {
     '@type': 'GeoCircle',
     geoMidpoint: {
@@ -55,9 +55,9 @@ const schema = {
     name: 'Decoration Services',
     itemListElement: [
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Wedding Decor' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Home Decor' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Birthday & Party Decor' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Event Styling' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Floral Design' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Balloon Decor' } },
     ],
   },
 };
