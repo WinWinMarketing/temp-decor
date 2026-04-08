@@ -10,7 +10,8 @@ const navLinks = [
 ---
 
 <header
-  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 bg-ivory/75 backdrop-blur-lg border-b border-warm-gray-light/20"
+  class="fixed top-0 inset-x-0 z-50 bg-black border-b border-white/10 transition-transform duration-500 ease-out motion-reduce:transition-none"
+  style="background-color:#000"
   id="site-header"
 >
   <div class="container flex items-center justify-between h-18 lg:h-22">
@@ -22,8 +23,8 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="relative text-sm uppercase tracking-[0.12em] text-warm-gray font-body font-medium
-                 hover:text-charcoal transition-colors duration-300 py-2
+          class="relative text-sm uppercase tracking-[0.12em] text-white/90 font-body font-medium
+                 hover:text-white transition-colors duration-300 py-2
                  after:content-[''] after:absolute after:bottom-0 after:left-0
                  after:w-0 after:h-px after:bg-gold after:transition-all after:duration-500
                  hover:after:w-full"
@@ -37,7 +38,7 @@ const navLinks = [
       <a
         href="/temp-decor/contact"
         class="relative inline-flex items-center gap-2 px-6 py-2.5 text-sm uppercase tracking-[0.12em]
-               font-body font-medium border border-charcoal/20 rounded-full text-charcoal
+               font-body font-medium border border-white/35 rounded-full text-white
                overflow-hidden transition-colors duration-500 hover:text-ivory hover:border-gold
                group"
       >
@@ -55,14 +56,14 @@ const navLinks = [
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <span class="block w-6 h-px bg-charcoal transition-all duration-300 origin-center" id="hamburger-top"></span>
-      <span class="block w-6 h-px bg-charcoal transition-all duration-300" id="hamburger-mid"></span>
-      <span class="block w-4 h-px bg-charcoal transition-all duration-300 origin-center" id="hamburger-bot"></span>
+      <span class="block w-6 h-px bg-white transition-all duration-300 origin-center" id="hamburger-top"></span>
+      <span class="block w-6 h-px bg-white transition-all duration-300" id="hamburger-mid"></span>
+      <span class="block w-4 h-px bg-white transition-all duration-300 origin-center" id="hamburger-bot"></span>
     </button>
   </div>
 
   <div
-    class="fixed inset-0 bg-ivory/95 backdrop-blur-3xl z-40 flex flex-col items-center justify-center
+    class="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex flex-col items-center justify-center
            opacity-0 pointer-events-none transition-opacity duration-500"
     id="mobile-menu"
   >
@@ -70,7 +71,7 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-heading text-h2 text-charcoal hover:text-gold transition-colors duration-300"
+          class="font-heading text-h2 text-white hover:text-gold transition-colors duration-300"
         >
           {link.label}
         </a>
@@ -89,6 +90,9 @@ const navLinks = [
 </header>
 
 <script>
+  /** @type {(() => void) | undefined} */
+  let headerScrollHandler;
+
   function initHeader() {
     const header = document.getElementById('site-header');
     const toggle = document.getElementById('mobile-toggle');
@@ -99,10 +103,20 @@ const navLinks = [
 
     if (!header || !toggle || !mobileMenu) return;
 
-    let lastScroll = 0;
-    let isMenuOpen = false;
+    if (headerScrollHandler) {
+      window.removeEventListener('scroll', headerScrollHandler);
+    }
 
-    window.addEventListener('scroll', () => {
+    const w = window;
+    if (w.__headerUiAbort) w.__headerUiAbort.abort();
+    w.__headerUiAbort = new AbortController();
+    const uiSignal = w.__headerUiAbort.signal;
+
+    let lastScroll = window.scrollY;
+    let isMenuOpen = false;
+    header.style.transform = 'translateY(0)';
+
+    headerScrollHandler = () => {
       if (isMenuOpen) return;
       const currentScroll = window.scrollY;
 
@@ -112,7 +126,9 @@ const navLinks = [
         header.style.transform = 'translateY(0)';
       }
       lastScroll = currentScroll;
-    });
+    };
+
+    window.addEventListener('scroll', headerScrollHandler, { passive: true });
 
     toggle.addEventListener('click', () => {
       isMenuOpen = !isMenuOpen;
@@ -133,7 +149,7 @@ const navLinks = [
         hamburgerBot?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
         document.body.style.overflow = '';
       }
-    });
+    }, { signal: uiSignal });
 
     mobileMenu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
@@ -144,7 +160,7 @@ const navLinks = [
         hamburgerMid?.classList.remove('opacity-0');
         hamburgerBot?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
         document.body.style.overflow = '';
-      });
+      }, { signal: uiSignal });
     });
   }
 
