@@ -18,9 +18,11 @@ const navLinkClass =
   id="site-header"
 >
   <div
-    class="relative z-[2] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-2 pb-4 lg:gap-x-8 lg:pt-2.5 lg:pb-5 xl:gap-x-12"
+    class="relative z-[2] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-0 pb-4 lg:gap-x-8 lg:pb-5 xl:gap-x-12"
   >
-    <div class="col-start-1 row-start-1 flex items-start justify-end min-w-0">
+    <div
+      class="col-start-1 row-start-1 flex min-w-0 self-start h-[3.75rem] lg:h-[4rem] items-center justify-end"
+    >
       <nav class="hidden lg:flex items-center justify-end gap-5 xl:gap-8" aria-label="Primary sections">
         {navLeft.map((link) => (
           <a href={link.href} class={navLinkClass}>
@@ -32,17 +34,19 @@ const navLinkClass =
 
     <a
       href="/temp-decor/"
-      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[3] mt-4 px-2 pb-1 sm:mt-5 lg:mt-7"
+      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[3] mt-2 px-2 pb-1 sm:mt-2.5 lg:mt-3"
     >
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[40px] w-auto lg:h-[46px] transition-transform duration-300 group-hover:scale-[1.02]"
+        class="h-[34px] w-auto lg:h-[40px] transition-transform duration-300 group-hover:scale-[1.02]"
         loading="eager"
       />
     </a>
 
-    <div class="col-start-3 row-start-1 flex items-start justify-end gap-3 min-w-0 lg:justify-start lg:gap-5 xl:gap-8">
+    <div
+      class="col-start-3 row-start-1 flex min-w-0 self-start h-[3.75rem] lg:h-[4rem] items-center justify-end gap-3 lg:justify-start lg:gap-5 xl:gap-8"
+    >
       <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Company and contact">
         {navRight.map((link) => (
           <a href={link.href} class={navLinkClass}>
@@ -64,7 +68,7 @@ const navLinkClass =
         <span class="absolute inset-0 bg-gold scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
       </a>
       <button
-        class="lg:hidden flex flex-col gap-1.5 p-2 -mr-2 mt-0.5"
+        class="lg:hidden flex flex-col gap-1.5 p-2 -mr-2"
         id="mobile-toggle"
         aria-label="Toggle menu"
         aria-expanded="false"
@@ -106,19 +110,19 @@ const navLinkClass =
 <style is:global>
   .site-header {
     --bar-h: 3.75rem;
-    --tab-h: 6.5rem;
-    --tab-w: 11.75rem;
+    --tab-h: 7.5rem;
+    --tab-w: 12rem;
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 4rem;
-      --tab-h: 7.125rem;
-      --tab-w: 13.5rem;
+      --tab-h: 8.25rem;
+      --tab-w: 14rem;
     }
   }
 
-  /* Full-width bar (single translucent layer — no overlap with tab below) */
+  /* Full-width bar — no bottom border (avoids bright seam above logo tab) */
   .site-header::before {
     content: '';
     position: absolute;
@@ -131,28 +135,29 @@ const navLinkClass =
     background-color: rgb(0 0 0 / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgb(255 255 255 / 0.1);
   }
 
   /*
-    Logo tab: starts below the bar only (top: var(--bar-h)) so alpha does not stack.
-    Sits behind content (z-index: 0) under the full logo.
+    Logo tab: tucked 1px under bar to kill subpixel hairline; height absorbs overlap.
+    No top border; only sides + bottom so nothing draws across the join.
   */
   .site-header::after {
     content: '';
     position: absolute;
-    top: var(--bar-h);
+    top: calc(var(--bar-h) - 1px);
     left: 50%;
     transform: translateX(-50%);
     width: var(--tab-w);
-    height: var(--tab-h);
+    height: calc(var(--tab-h) + 1px);
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 0 0 1.125rem 1.125rem;
-    border: 1px solid rgb(255 255 255 / 0.1);
+    border-left: 1px solid rgb(255 255 255 / 0.08);
+    border-right: 1px solid rgb(255 255 255 / 0.08);
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
     border-top: none;
   }
 
