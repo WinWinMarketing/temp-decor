@@ -17,10 +17,8 @@ const navLinkClass =
   class="site-header fixed top-0 inset-x-0 z-50 overflow-visible border-0 transition-transform duration-500 ease-out motion-reduce:transition-none"
   id="site-header"
 >
-  <div class="header-tab-junction" aria-hidden="true"></div>
-
   <div
-    class="relative z-[2] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-0 pb-6 lg:gap-x-8 lg:pb-7 xl:gap-x-12"
+    class="relative z-[2] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-0 pb-6 lg:gap-x-8 lg:pb-6 xl:gap-x-12"
   >
     <div
       class="col-start-1 row-start-1 flex min-w-0 self-start h-[3.75rem] lg:h-[4rem] items-center justify-end"
@@ -110,19 +108,20 @@ const navLinkClass =
 </header>
 
 <style is:global>
+  /* Tab size unchanged from earlier layout; logo remains large above it. */
   .site-header {
     --bar-h: 3.75rem;
-    --tab-h: 16rem;
-    --tab-w: 18rem;
-    --tab-br: 1.25rem;
+    --tab-h: 8rem;
+    --tab-w: 12rem;
+    --tab-br: 1.125rem;
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 4rem;
-      --tab-h: 17.5rem;
-      --tab-w: 22rem;
-      --tab-br: 1.5rem;
+      --tab-h: 8.75rem;
+      --tab-w: 14rem;
+      --tab-br: 1.25rem;
     }
   }
 
@@ -152,52 +151,33 @@ const navLinkClass =
   }
 
   /*
-    Solid band (no backdrop-filter) masks the compositing seam where ::before
-    meets ::after; overlap alone is unreliable with blurred layers.
+    One frosted layer + clip-path (bar + centered tab, rounded bottom).
+    Avoids stacking two translucent blurred layers (seams / darker overlap bands).
+    y-% = bar_h / (bar_h + tab_h); corner % = tab_br / (bar_h + tab_h).
   */
-  .site-header .header-tab-junction {
-    position: absolute;
-    left: 50%;
-    top: var(--bar-h);
-    transform: translate(-50%, -4px);
-    width: min(var(--tab-w), calc(100vw - 1.5rem));
-    height: 10px;
-    z-index: 1;
-    pointer-events: none;
-    /* Slightly more opaque than bar/tab so the 1-device-pixel gap disappears */
-    background-color: rgb(0 0 0 / 0.88);
-  }
-
-  /* Top bar only — full width, no clip-path. */
   .site-header::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: var(--bar-h);
+    height: calc(var(--bar-h) + var(--tab-h));
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    clip-path: path(
+      'M 0 0 L 100% 0 L 100% 31.915% L calc(50% + 6rem) 31.915% L calc(50% + 6rem) calc(100% - 9.574%) A 1.125rem 1.125rem 0 0 1 calc(50% + 4.875rem) 100% L calc(50% - 4.875rem) 100% A 1.125rem 1.125rem 0 0 1 calc(50% - 6rem) calc(100% - 9.574%) L calc(50% - 6rem) 31.915% L 0 31.915% Z'
+    );
   }
 
-  /* Logo tab panel (rounded bottom); sits under junction band at the bar edge. */
-  .site-header::after {
-    content: '';
-    position: absolute;
-    top: var(--bar-h);
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(var(--tab-w), calc(100vw - 1.5rem));
-    height: var(--tab-h);
-    z-index: 0;
-    pointer-events: none;
-    background-color: rgb(0 0 0 / 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 0 0 var(--tab-br) var(--tab-br);
+  @media (min-width: 1024px) {
+    .site-header::before {
+      clip-path: path(
+        'M 0 0 L 100% 0 L 100% 31.373% L calc(50% + 7rem) 31.373% L calc(50% + 7rem) calc(100% - 9.804%) A 1.25rem 1.25rem 0 0 1 calc(50% + 5.75rem) 100% L calc(50% - 5.75rem) 100% A 1.25rem 1.25rem 0 0 1 calc(50% - 7rem) calc(100% - 9.804%) L calc(50% - 7rem) 31.373% L 0 31.373% Z'
+      );
+    }
   }
 </style>
 
