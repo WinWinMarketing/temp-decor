@@ -39,7 +39,7 @@ const navLinkClass =
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[28px] w-auto sm:h-[30px] lg:h-[34px] transition-transform duration-300 group-hover:scale-[1.02]"
+        class="h-[24px] w-auto sm:h-[26px] lg:h-[30px] transition-transform duration-300 group-hover:scale-[1.02]"
         loading="eager"
       />
     </a>
@@ -110,45 +110,53 @@ const navLinkClass =
 <style is:global>
   .site-header {
     --bar-h: 3.75rem;
-    --tab-h: 7.875rem;
-    --tab-w: 11.5rem;
-    --tab-r: 0.875rem;
+    --tab-h: 7.5rem;
+    --tab-w: 11rem;
+    --tab-br: 1.125rem;
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 4rem;
-      --tab-h: 8.5rem;
-      --tab-w: 13.5rem;
-      --tab-r: 1rem;
+      --tab-h: 8.125rem;
+      --tab-w: 12.75rem;
+      --tab-br: 1.25rem;
     }
   }
 
-  /* One frosted layer: bar + tab share one clip-path (no stacked transparency). */
+  /* Top bar only — full width, no clip-path. */
   .site-header::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: calc(var(--bar-h) + var(--tab-h));
+    height: var(--bar-h);
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% var(--bar-h),
-      calc(50% + var(--tab-w) / 2) var(--bar-h),
-      calc(50% + var(--tab-w) / 2) calc(var(--bar-h) + var(--tab-h) - var(--tab-r)),
-      calc(50% + var(--tab-w) / 2 - var(--tab-r)) calc(var(--bar-h) + var(--tab-h)),
-      calc(50% - var(--tab-w) / 2 + var(--tab-r)) calc(var(--bar-h) + var(--tab-h)),
-      calc(50% - var(--tab-w) / 2) calc(var(--bar-h) + var(--tab-h) - var(--tab-r)),
-      calc(50% - var(--tab-w) / 2) var(--bar-h),
-      0 var(--bar-h)
-    );
+  }
+
+  /*
+    Logo panel: starts exactly at bottom of bar (no overlap = no darker stacked glass).
+    border-radius gives true rounded bottom corners (polygon chamfer was straight).
+  */
+  .site-header::after {
+    content: '';
+    position: absolute;
+    top: var(--bar-h);
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--tab-w);
+    height: var(--tab-h);
+    z-index: 0;
+    pointer-events: none;
+    background-color: rgb(0 0 0 / 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0 0 var(--tab-br) var(--tab-br);
   }
 </style>
 
