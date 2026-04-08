@@ -14,7 +14,7 @@ const { slug } = Astro.params;
 const project = getProjectBySlug(slug!);
 
 if (!project) {
-  return Astro.redirect('/portfolio');
+  return Astro.redirect(`${import.meta.env.BASE_URL}portfolio`);
 }
 
 const allProjects = getAllProjects();

@@ -18,6 +18,7 @@ interface Props {
 }
 
 const { title, description, heroImage, intro, features, galleryImages, faqs } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 const faqSchema = faqs.length > 0 ? {
   '@context': 'https://schema.org',
@@ -60,7 +61,7 @@ const faqSchema = faqs.length > 0 ? {
             ))}
           </ul>
           <a
-            href="/contact"
+            href={`${base}contact`}
             class="inline-flex items-center gap-2 px-8 py-3.5 mt-8 bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium rounded-sm hover:bg-gold-light transition-all duration-500 group"
             data-magnetic
           >
@@ -111,7 +112,7 @@ const faqSchema = faqs.length > 0 ? {
         Contact us today for a free consultation. Let's bring your vision to life.
       </p>
       <a
-        href="/contact"
+        href={`${base}contact`}
         class="inline-flex items-center gap-2 px-8 py-3.5 bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium rounded-sm hover:bg-gold-light transition-all duration-500"
       >
         Get a Free Quote

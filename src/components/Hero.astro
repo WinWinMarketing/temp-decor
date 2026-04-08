@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 const slides = [
   {
     image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&q=80',
@@ -41,22 +42,22 @@ const slides = [
         />
       </div>
     ))}
-    <div class="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-charcoal/30 to-charcoal/60"></div>
+    <div class="absolute inset-0 bg-charcoal/55"></div>
   </div>
 
-  <div class="relative z-10 text-center px-5 max-w-4xl">
-    <p class="section-label text-gold-light mb-4" data-animate="fade-up">
+  <div class="relative z-10 text-center px-5 max-w-5xl">
+    <p class="section-label text-gold-light mb-6 text-sm lg:text-base tracking-[0.3em]" data-animate="fade-up">
       One-Stop Wedding & Event Decoration
     </p>
     <h1
-      class="font-heading text-display text-ivory leading-[1.05] mb-6"
+      class="font-heading text-ivory leading-[1.05] mb-6 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl"
       id="hero-title"
       data-animate="fade-up"
     >
       {slides[0].title}
     </h1>
     <p
-      class="font-body text-lead text-ivory/80 max-w-2xl mx-auto leading-relaxed mb-10"
+      class="font-body text-ivory/90 max-w-2xl mx-auto leading-relaxed mb-10 text-lg lg:text-xl"
       id="hero-subtitle"
       data-animate="fade-up"
     >
@@ -64,7 +65,7 @@ const slides = [
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center" data-animate="fade-up">
       <a
-        href="/portfolio"
+        href={`${base}portfolio`}
         class="relative inline-flex items-center justify-center gap-2 px-8 py-3.5
                bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium
                rounded-sm overflow-hidden transition-all duration-500 hover:bg-gold-light hover:shadow-lg group"
@@ -75,7 +76,7 @@ const slides = [
         </svg>
       </a>
       <a
-        href="/contact"
+        href={`${base}contact`}
         class="inline-flex items-center justify-center gap-2 px-8 py-3.5
                border border-ivory/40 text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium
                rounded-sm transition-all duration-500 hover:bg-ivory/10 hover:border-ivory"

@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 <section class="py-20 lg:py-28 bg-ivory" id="intro">
   <div class="container">
@@ -19,7 +20,7 @@
           balloon garlands, and expertly styled spaces across the GTA.
         </p>
         <a
-          href="/contact"
+          href={`${base}contact`}
           class="inline-flex items-center justify-center gap-2 px-8 py-3.5
                  bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium
                  rounded-sm transition-all duration-500 hover:bg-gold-light hover:shadow-lg group"
