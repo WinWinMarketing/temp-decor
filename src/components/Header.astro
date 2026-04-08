@@ -34,7 +34,7 @@ const navLinkClass =
 
     <a
       href="/temp-decor/"
-      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[3] mt-1.5 px-2 pb-1 sm:mt-2 lg:mt-2.5"
+      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[3] mt-1 px-2 pb-1 sm:mt-1.5 lg:mt-2"
     >
       <img
         src="/temp-decor/logo.png"
@@ -110,42 +110,42 @@ const navLinkClass =
 <style is:global>
   .site-header {
     --bar-h: 3.75rem;
-    --tab-h: 7.5rem;
-    --tab-w: 11rem;
+    --tab-h: 8rem;
+    --tab-w: 12rem;
     --tab-br: 1.125rem;
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 4rem;
-      --tab-h: 8.125rem;
-      --tab-w: 12.75rem;
+      --tab-h: 8.75rem;
+      --tab-w: 14rem;
       --tab-br: 1.25rem;
     }
   }
 
   /*
-    Explicit heights: global.css sets img { height: auto }, which can override Tailwind h-*.
-    Scale with breakpoints so it fits the ~60–64px bar without feeling oversized.
+    Tall mark so it reads in the bar and continues into the frosted tab below.
+    global.css sets img { height: auto }; keep explicit heights here.
   */
   .site-header .header-brand-logo {
     width: auto;
-    height: 34px;
-    max-height: 34px;
+    height: 54px;
+    max-height: 54px;
     object-fit: contain;
   }
 
   @media (min-width: 640px) {
     .site-header .header-brand-logo {
-      height: 38px;
-      max-height: 38px;
+      height: 62px;
+      max-height: 62px;
     }
   }
 
   @media (min-width: 1024px) {
     .site-header .header-brand-logo {
-      height: 42px;
-      max-height: 42px;
+      height: 70px;
+      max-height: 70px;
     }
   }
 
@@ -165,17 +165,17 @@ const navLinkClass =
   }
 
   /*
-    Logo panel: starts exactly at bottom of bar (no overlap = no darker stacked glass).
-    border-radius gives true rounded bottom corners (polygon chamfer was straight).
+    Logo panel: 1px overlap under the bar hides the subpixel hairline from separate
+    pseudo-elements + backdrop-filter without a visible seam.
   */
   .site-header::after {
     content: '';
     position: absolute;
-    top: var(--bar-h);
+    top: calc(var(--bar-h) - 1px);
     left: 50%;
     transform: translateX(-50%);
     width: var(--tab-w);
-    height: var(--tab-h);
+    height: calc(var(--tab-h) + 1px);
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
