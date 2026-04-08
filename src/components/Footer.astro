@@ -1,19 +1,17 @@
 ---
 const currentYear = new Date().getFullYear();
-const base = import.meta.env.BASE_URL;
-
 const navLinks = [
-  { href: `${base}services`, label: 'Decor Services' },
-  { href: `${base}portfolio`, label: 'Your Design' },
-  { href: `${base}about`, label: 'Our Company' },
-  { href: `${base}contact`, label: 'Contact Us' },
+  { href: '/temp-decor/services', label: 'Decor Services' },
+  { href: '/temp-decor/portfolio', label: 'Your Design' },
+  { href: '/temp-decor/about', label: 'Our Company' },
+  { href: '/temp-decor/contact', label: 'Contact Us' },
 ];
 
 const services = [
-  { href: `${base}services/wedding-decor`, label: 'Wedding Decor' },
-  { href: `${base}services/birthday-party-decor`, label: 'Birthday & Party Decor' },
-  { href: `${base}services/event-styling`, label: 'Event Styling' },
-  { href: `${base}services/balloon-decor`, label: 'Balloon Decor' },
+  { href: '/temp-decor/services/wedding-decor', label: 'Wedding Decor' },
+  { href: '/temp-decor/services/birthday-party-decor', label: 'Birthday & Party Decor' },
+  { href: '/temp-decor/services/event-styling', label: 'Event Styling' },
+  { href: '/temp-decor/services/balloon-decor', label: 'Balloon Decor' },
 ];
 ---
 
@@ -21,7 +19,7 @@ const services = [
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-ivory/10">
       <div>
-        <a href={base} class="inline-block mb-6">
+        <a href="/temp-decor/" class="inline-block mb-6">
           <img src="/temp-decor/logo.png" alt="Sai Decoration" class="h-14 w-auto" />
         </a>
         <p class="text-sm leading-relaxed text-ivory/50 max-w-xs">

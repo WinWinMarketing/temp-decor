@@ -1,5 +1,5 @@
 ---
-const base = import.meta.env.BASE_URL;
+const base = '/temp-decor';
 ---
 <section class="py-24 lg:py-32 relative overflow-hidden" id="cta">
   <div class="absolute inset-0">
@@ -23,7 +23,7 @@ const base = import.meta.env.BASE_URL;
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center" data-animate="fade-up">
       <a
-        href={`${base}contact`}
+        href={`${base}/contact`}
         class="inline-flex items-center justify-center gap-2 px-8 py-3.5
                bg-gold text-ivory text-sm uppercase tracking-[0.15em] font-body font-medium
                rounded-sm transition-all duration-500 hover:bg-gold-light hover:shadow-lg group"

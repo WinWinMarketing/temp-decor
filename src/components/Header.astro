@@ -1,11 +1,11 @@
 ---
-const base = import.meta.env.BASE_URL;
+const base = '/temp-decor';
 const navLinks = [
-  { href: base, label: 'Home' },
-  { href: `${base}services`, label: 'Decor Services' },
-  { href: `${base}portfolio`, label: 'Your Design' },
-  { href: `${base}about`, label: 'Our Company' },
-  { href: `${base}contact`, label: 'Contact Us' },
+  { href: `${base}/`, label: 'Home' },
+  { href: `${base}/services`, label: 'Decor Services' },
+  { href: `${base}/portfolio`, label: 'Your Design' },
+  { href: `${base}/about`, label: 'Our Company' },
+  { href: `${base}/contact`, label: 'Contact Us' },
 ];
 ---
 
@@ -14,7 +14,7 @@ const navLinks = [
   id="site-header"
 >
   <div class="container flex items-center justify-between h-18 lg:h-22">
-    <a href="/" class="block group">
+    <a href="/temp-decor/" class="block group">
       <img src="/temp-decor/logo.png" alt="Sai Decoration" style="height:56px;width:auto;" class="lg:!h-[68px]" />
     </a>
 
@@ -35,7 +35,7 @@ const navLinks = [
 
     <div class="hidden lg:flex items-center gap-4">
       <a
-        href={`${base}contact`}
+        href="/temp-decor/contact"
         class="relative inline-flex items-center gap-2 px-6 py-2.5 text-sm uppercase tracking-[0.12em]
                font-body font-medium border border-charcoal/20 rounded-full text-charcoal
                overflow-hidden transition-colors duration-500 hover:text-ivory hover:border-gold
@@ -78,7 +78,7 @@ const navLinks = [
     </nav>
     <div class="mt-12">
       <a
-        href={`${base}contact`}
+        href="/temp-decor/contact"
         class="inline-flex items-center gap-2 px-8 py-3 bg-gold text-ivory text-sm uppercase
                tracking-[0.15em] font-body font-medium rounded-full"
       >

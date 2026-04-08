@@ -61,7 +61,7 @@ const showcaseItems = [
     description: 'Celebrating milestones in style with custom props, themed backdrops, and coordinated decor that makes every moment picture-perfect.',
   },
 ];
-const base = import.meta.env.BASE_URL;
+const base = '/temp-decor';
 ---
 
 <section class="py-16 lg:py-24 bg-ivory" id="decor-showcase">
@@ -80,7 +80,7 @@ const base = import.meta.env.BASE_URL;
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
       {showcaseItems.map((item) => (
         <a
-          href={`${base}portfolio`}
+          href={`${base}/portfolio`}
           class="group block overflow-hidden rounded-2xl bg-cream"
           data-animate="fade-up"
         >
