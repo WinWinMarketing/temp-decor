@@ -39,7 +39,7 @@ const navLinkClass =
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[22px] w-auto lg:h-[26px] transition-transform duration-300 group-hover:scale-[1.02]"
+        class="h-[16px] w-auto lg:h-[20px] transition-transform duration-300 group-hover:scale-[1.02]"
         loading="eager"
       />
     </a>
@@ -109,33 +109,21 @@ const navLinkClass =
 
 <style is:global>
   .site-header {
-    /*
-      ONE shape drawn by ::before via clip-path.
-      bar-h  = main strip height
-      total-h = bar-h + how far the tab hangs below
-      tab-left / tab-right = horizontal edges of the center bump (% of viewport)
-      tab-radius = rounded bottom corners via SVG path() below
-    */
-    --bar-h: 60;    /* px, used in calc */
-    --tab-drop: 56; /* px below bar */
-    --tab-left: 38%;
-    --tab-right: 62%;
+    --bar-h: 60;
+    --tab-drop: 44;
+    --tab-half: 55;  /* half-width of the center tab in px */
+    --tab-r: 10;     /* bottom corner radius in px */
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 64;
-      --tab-drop: 64;
-      --tab-left: 40%;
-      --tab-right: 60%;
+      --tab-drop: 48;
+      --tab-half: 65;
+      --tab-r: 12;
     }
   }
 
-  /*
-    Single frosted layer shaped as bar + center tab.
-    Because it is ONE element, there is zero seam — impossible to get
-    double compositing from two transparent layers.
-  */
   .site-header::before {
     content: '';
     position: absolute;
@@ -149,46 +137,35 @@ const navLinkClass =
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     clip-path: polygon(
-      /* top-left */
       0 0,
-      /* top-right */
       100% 0,
-      /* right edge down to bar bottom */
       100% calc(var(--bar-h) * 1px),
-      /* tab right edge at bar bottom */
-      var(--tab-right) calc(var(--bar-h) * 1px),
-      /* tab right edge at full height minus radius */
-      var(--tab-right) calc((var(--bar-h) + var(--tab-drop) - 12) * 1px),
-      /* bottom-right rounded corner (approximated with extra points) */
-      calc(var(--tab-right) - 0.15%) calc((var(--bar-h) + var(--tab-drop) - 6) * 1px),
-      calc(var(--tab-right) - 0.5%) calc((var(--bar-h) + var(--tab-drop) - 2) * 1px),
-      calc(var(--tab-right) - 1.2%) calc((var(--bar-h) + var(--tab-drop)) * 1px),
-      /* bottom edge */
-      calc(var(--tab-left) + 1.2%) calc((var(--bar-h) + var(--tab-drop)) * 1px),
-      /* bottom-left rounded corner */
-      calc(var(--tab-left) + 0.5%) calc((var(--bar-h) + var(--tab-drop) - 2) * 1px),
-      calc(var(--tab-left) + 0.15%) calc((var(--bar-h) + var(--tab-drop) - 6) * 1px),
-      var(--tab-left) calc((var(--bar-h) + var(--tab-drop) - 12) * 1px),
-      /* tab left edge back up to bar bottom */
-      var(--tab-left) calc(var(--bar-h) * 1px),
-      /* left edge at bar bottom */
+      calc(50% + var(--tab-half) * 1px) calc(var(--bar-h) * 1px),
+      calc(50% + var(--tab-half) * 1px) calc((var(--bar-h) + var(--tab-drop) - var(--tab-r)) * 1px),
+      calc(50% + (var(--tab-half) - 1) * 1px) calc((var(--bar-h) + var(--tab-drop) - 3) * 1px),
+      calc(50% + (var(--tab-half) - 4) * 1px) calc((var(--bar-h) + var(--tab-drop) - 1) * 1px),
+      calc(50% + (var(--tab-half) - var(--tab-r)) * 1px) calc((var(--bar-h) + var(--tab-drop)) * 1px),
+      calc(50% - (var(--tab-half) - var(--tab-r)) * 1px) calc((var(--bar-h) + var(--tab-drop)) * 1px),
+      calc(50% - (var(--tab-half) - 4) * 1px) calc((var(--bar-h) + var(--tab-drop) - 1) * 1px),
+      calc(50% - (var(--tab-half) - 1) * 1px) calc((var(--bar-h) + var(--tab-drop) - 3) * 1px),
+      calc(50% - var(--tab-half) * 1px) calc((var(--bar-h) + var(--tab-drop) - var(--tab-r)) * 1px),
+      calc(50% - var(--tab-half) * 1px) calc(var(--bar-h) * 1px),
       0 calc(var(--bar-h) * 1px)
     );
   }
 
-  /* Thin border outline on the tab portion only (cosmetic, not structural) */
   .site-header::after {
     content: '';
     position: absolute;
     top: calc(var(--bar-h) * 1px);
     left: 50%;
     transform: translateX(-50%);
-    width: calc(var(--tab-right) - var(--tab-left));
+    width: calc(var(--tab-half) * 2px);
     height: calc(var(--tab-drop) * 1px);
     z-index: 0;
     pointer-events: none;
     background: none;
-    border-radius: 0 0 0.75rem 0.75rem;
+    border-radius: 0 0 calc(var(--tab-r) * 1px) calc(var(--tab-r) * 1px);
     border-left: 1px solid rgb(255 255 255 / 0.06);
     border-right: 1px solid rgb(255 255 255 / 0.06);
     border-bottom: 1px solid rgb(255 255 255 / 0.06);
