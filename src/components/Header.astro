@@ -39,7 +39,7 @@ const navLinkClass =
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[24px] w-auto sm:h-[26px] lg:h-[30px] transition-transform duration-300 group-hover:scale-[1.02]"
+        class="header-brand-logo w-auto transition-transform duration-300 group-hover:scale-[1.02]"
         loading="eager"
       />
     </a>
@@ -121,6 +121,31 @@ const navLinkClass =
       --tab-h: 8.125rem;
       --tab-w: 12.75rem;
       --tab-br: 1.25rem;
+    }
+  }
+
+  /*
+    Explicit pixel heights: global.css sets img { height: auto }, which can override
+    Tailwind h-* depending on bundle order, so utilities alone may not resize this.
+  */
+  .site-header .header-brand-logo {
+    width: auto;
+    height: 14px;
+    max-height: 14px;
+    object-fit: contain;
+  }
+
+  @media (min-width: 640px) {
+    .site-header .header-brand-logo {
+      height: 16px;
+      max-height: 16px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-header .header-brand-logo {
+      height: 18px;
+      max-height: 18px;
     }
   }
 
