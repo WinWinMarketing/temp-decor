@@ -34,12 +34,12 @@ const navLinkClass =
 
     <a
       href="/temp-decor/"
-      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[3] mt-2 px-2 pb-1 sm:mt-2.5 lg:mt-3"
+      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[3] mt-1.5 px-2 pb-1 sm:mt-2 lg:mt-2.5"
     >
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[34px] w-auto lg:h-[40px] transition-transform duration-300 group-hover:scale-[1.02]"
+        class="h-[28px] w-auto sm:h-[30px] lg:h-[34px] transition-transform duration-300 group-hover:scale-[1.02]"
         loading="eager"
       />
     </a>
@@ -110,61 +110,45 @@ const navLinkClass =
 <style is:global>
   .site-header {
     --bar-h: 3.75rem;
-    --tab-h: 7.5rem;
-    --tab-w: 12rem;
+    --tab-h: 7.875rem;
+    --tab-w: 11.5rem;
+    --tab-r: 0.875rem;
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 4rem;
-      --tab-h: 8.25rem;
-      --tab-w: 14rem;
+      --tab-h: 8.5rem;
+      --tab-w: 13.5rem;
+      --tab-r: 1rem;
     }
   }
 
-  /* Full-width bar — no bottom border (avoids bright seam above logo tab) */
+  /* One frosted layer: bar + tab share one clip-path (no stacked transparency). */
   .site-header::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: var(--bar-h);
-    z-index: 1;
-    pointer-events: none;
-    background-color: rgb(0 0 0 / 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  /*
-    Logo tab: tucked 1px under bar to kill subpixel hairline; height absorbs overlap.
-    No top border; only sides + bottom so nothing draws across the join.
-  */
-  .site-header::after {
-    content: '';
-    position: absolute;
-    top: calc(var(--bar-h) - 1px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: var(--tab-w);
-    height: calc(var(--tab-h) + 1px);
+    height: calc(var(--bar-h) + var(--tab-h));
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-radius: 0 0 1.125rem 1.125rem;
-    border-left: 1px solid rgb(255 255 255 / 0.08);
-    border-right: 1px solid rgb(255 255 255 / 0.08);
-    border-bottom: 1px solid rgb(255 255 255 / 0.08);
-    border-top: none;
-  }
-
-  @media (min-width: 1024px) {
-    .site-header::after {
-      border-radius: 0 0 1.25rem 1.25rem;
-    }
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% var(--bar-h),
+      calc(50% + var(--tab-w) / 2) var(--bar-h),
+      calc(50% + var(--tab-w) / 2) calc(var(--bar-h) + var(--tab-h) - var(--tab-r)),
+      calc(50% + var(--tab-w) / 2 - var(--tab-r)) calc(var(--bar-h) + var(--tab-h)),
+      calc(50% - var(--tab-w) / 2 + var(--tab-r)) calc(var(--bar-h) + var(--tab-h)),
+      calc(50% - var(--tab-w) / 2) calc(var(--bar-h) + var(--tab-h) - var(--tab-r)),
+      calc(50% - var(--tab-w) / 2) var(--bar-h),
+      0 var(--bar-h)
+    );
   }
 </style>
 
