@@ -10,7 +10,7 @@ const navLinks = [
 const navLeft = navLinks.slice(0, 3);
 const navRight = navLinks.slice(3);
 const navLinkClass =
-  'relative text-sm uppercase tracking-[0.12em] text-white/90 font-body font-medium whitespace-nowrap hover:text-white transition-colors duration-300 py-2 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-500 hover:after:w-full';
+  'relative text-sm uppercase tracking-[0.12em] text-white/90 font-body font-medium whitespace-nowrap hover:text-white transition-colors duration-300 py-0.5 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-500 hover:after:w-full';
 ---
 
 <header
@@ -18,9 +18,9 @@ const navLinkClass =
   id="site-header"
 >
   <div
-    class="relative z-[1] container grid grid-cols-[1fr_auto_1fr] items-center gap-x-4 py-2.5 pb-7 lg:gap-x-8 lg:py-3 lg:pb-9 xl:gap-x-12"
+    class="relative z-[1] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-1.5 pb-3 lg:gap-x-8 lg:pt-2 lg:pb-3.5 xl:gap-x-12"
   >
-    <div class="col-start-1 row-start-1 flex items-center self-center justify-end min-w-0">
+    <div class="col-start-1 row-start-1 flex items-start justify-end min-w-0">
       <nav class="hidden lg:flex items-center justify-end gap-5 xl:gap-8" aria-label="Primary sections">
         {navLeft.map((link) => (
           <a href={link.href} class={navLinkClass}>
@@ -32,17 +32,17 @@ const navLinkClass =
 
     <a
       href="/temp-decor/"
-      class="col-start-2 row-start-1 justify-self-center self-center shrink-0 group relative z-[2] -mb-1 lg:-mb-0.5"
+      class="col-start-2 row-start-1 justify-self-center self-start shrink-0 group relative z-[2] mt-4 px-2 pb-1 sm:mt-5 lg:mt-6"
     >
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[50px] w-auto lg:h-[58px] transition-transform duration-300 group-hover:scale-[1.02]"
+        class="h-[48px] w-auto lg:h-[54px] transition-transform duration-300 group-hover:scale-[1.02]"
         loading="eager"
       />
     </a>
 
-    <div class="col-start-3 row-start-1 flex items-center self-center justify-end gap-3 min-w-0 lg:justify-start lg:gap-5 xl:gap-8">
+    <div class="col-start-3 row-start-1 flex items-start justify-end gap-3 min-w-0 lg:justify-start lg:gap-5 xl:gap-8">
       <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Company and contact">
         {navRight.map((link) => (
           <a href={link.href} class={navLinkClass}>
@@ -52,7 +52,7 @@ const navLinkClass =
       </nav>
       <a
         href="/temp-decor/contact"
-        class="relative hidden lg:inline-flex items-center gap-2 px-5 py-2.5 xl:px-6 text-sm uppercase tracking-[0.12em]
+        class="relative hidden lg:inline-flex items-center gap-2 px-4 py-1.5 xl:px-5 text-sm uppercase tracking-[0.12em]
                font-body font-medium border border-white/35 rounded-full text-white shrink-0
                overflow-hidden transition-colors duration-500 hover:text-ivory hover:border-gold
                group"
@@ -64,7 +64,7 @@ const navLinkClass =
         <span class="absolute inset-0 bg-gold scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
       </a>
       <button
-        class="lg:hidden flex flex-col gap-1.5 p-2 -mr-2"
+        class="lg:hidden flex flex-col gap-1.5 p-2 -mr-2 mt-0.5"
         id="mobile-toggle"
         aria-label="Toggle menu"
         aria-expanded="false"
@@ -104,38 +104,51 @@ const navLinkClass =
 </header>
 
 <style is:global>
+  /* Thin full-width bar */
   .site-header::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgb(255 255 255 / 0.12);
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(100% - 1.25rem),
-      58% calc(100% - 1.25rem),
-      50% 100%,
-      42% calc(100% - 1.25rem),
-      0 calc(100% - 1.25rem)
-    );
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  /* Center tab behind logo: square-ish panel, rounded bottom only */
+  .site-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10.75rem;
+    height: 6.25rem;
+    z-index: 0;
+    pointer-events: none;
+    background-color: rgb(0 0 0 / 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 0 0 1rem 1rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-top: none;
+    box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 0.06);
   }
 
   @media (min-width: 1024px) {
     .site-header::before {
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - 1.4rem),
-        60% calc(100% - 1.4rem),
-        50% 100%,
-        40% calc(100% - 1.4rem),
-        0 calc(100% - 1.4rem)
-      );
+      height: 3.125rem;
+    }
+
+    .site-header::after {
+      width: 12.5rem;
+      height: 6.75rem;
+      border-radius: 0 0 1.125rem 1.125rem;
     }
   }
 </style>
