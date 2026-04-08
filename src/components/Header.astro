@@ -125,27 +125,27 @@ const navLinkClass =
   }
 
   /*
-    Explicit pixel heights: global.css sets img { height: auto }, which can override
-    Tailwind h-* depending on bundle order, so utilities alone may not resize this.
+    Explicit heights: global.css sets img { height: auto }, which can override Tailwind h-*.
+    Scale with breakpoints so it fits the ~60–64px bar without feeling oversized.
   */
   .site-header .header-brand-logo {
     width: auto;
-    height: 50px;
-    max-height: 50px;
+    height: 34px;
+    max-height: 34px;
     object-fit: contain;
   }
 
   @media (min-width: 640px) {
     .site-header .header-brand-logo {
-      height: 16px;
-      max-height: 16px;
+      height: 38px;
+      max-height: 38px;
     }
   }
 
   @media (min-width: 1024px) {
     .site-header .header-brand-logo {
-      height: 18px;
-      max-height: 18px;
+      height: 42px;
+      max-height: 42px;
     }
   }
 
