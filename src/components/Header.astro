@@ -14,14 +14,14 @@ const navLinkClass =
 ---
 
 <header
-  class="fixed top-0 inset-x-0 z-50 bg-black/75 backdrop-blur-lg border-b border-white/15 transition-transform duration-500 ease-out motion-reduce:transition-none"
+  class="site-header fixed top-0 inset-x-0 z-50 overflow-visible border-0 transition-transform duration-500 ease-out motion-reduce:transition-none"
   id="site-header"
 >
   <div
-    class="container grid grid-cols-[1fr_auto_1fr] items-center gap-x-4 h-18 lg:h-22 lg:gap-x-8 xl:gap-x-12"
+    class="relative z-[1] container grid grid-cols-[1fr_auto_1fr] items-center gap-x-4 py-2.5 pb-7 lg:gap-x-8 lg:py-3 lg:pb-9 xl:gap-x-12"
   >
-    <div class="col-start-1 row-start-1 flex items-center justify-end min-w-0">
-      <nav class="hidden lg:flex items-center justify-end gap-6 xl:gap-8" aria-label="Primary sections">
+    <div class="col-start-1 row-start-1 flex items-center self-center justify-end min-w-0">
+      <nav class="hidden lg:flex items-center justify-end gap-5 xl:gap-8" aria-label="Primary sections">
         {navLeft.map((link) => (
           <a href={link.href} class={navLinkClass}>
             {link.label}
@@ -32,18 +32,17 @@ const navLinkClass =
 
     <a
       href="/temp-decor/"
-      class="col-start-2 row-start-1 justify-self-center shrink-0 group py-1"
+      class="col-start-2 row-start-1 justify-self-center self-center shrink-0 group relative z-[2] -mb-1 lg:-mb-0.5"
     >
       <img
         src="/temp-decor/logo.png"
         alt="Sai Decoration"
-        class="h-[64px] w-auto lg:h-[84px] transition-transform duration-300 group-hover:scale-[1.02]"
-        width="180"
-        height="84"
+        class="h-[50px] w-auto lg:h-[58px] transition-transform duration-300 group-hover:scale-[1.02]"
+        loading="eager"
       />
     </a>
 
-    <div class="col-start-3 row-start-1 flex items-center justify-end gap-3 min-w-0 lg:justify-start lg:gap-6 xl:gap-8">
+    <div class="col-start-3 row-start-1 flex items-center self-center justify-end gap-3 min-w-0 lg:justify-start lg:gap-5 xl:gap-8">
       <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Company and contact">
         {navRight.map((link) => (
           <a href={link.href} class={navLinkClass}>
@@ -78,7 +77,7 @@ const navLinkClass =
   </div>
 
   <div
-    class="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex flex-col items-center justify-center
+    class="fixed inset-0 z-[3] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center
            opacity-0 pointer-events-none transition-opacity duration-500"
     id="mobile-menu"
   >
@@ -103,6 +102,43 @@ const navLinkClass =
     </div>
   </div>
 </header>
+
+<style is:global>
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: rgb(0 0 0 / 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgb(255 255 255 / 0.12);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 1.25rem),
+      58% calc(100% - 1.25rem),
+      50% 100%,
+      42% calc(100% - 1.25rem),
+      0 calc(100% - 1.25rem)
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .site-header::before {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - 1.4rem),
+        60% calc(100% - 1.4rem),
+        50% 100%,
+        40% calc(100% - 1.4rem),
+        0 calc(100% - 1.4rem)
+      );
+    }
+  }
+</style>
 
 <script>
   /** @type {(() => void) | undefined} */
