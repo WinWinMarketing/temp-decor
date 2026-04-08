@@ -10,29 +10,29 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: 'Sai Decoration transformed our wedding into a fairy tale. Every detail was absolutely perfect — from the floral arch to the candlelit centerpieces. Our guests are still talking about it.',
-    name: 'Sarah & James Mitchell',
-    role: 'Wedding at The Grand Estate',
+    quote: 'Mohana decorated my daughter\'s 18th debut party and she did an amazing job! Everything was stunning — from the backdrop to the centrepieces. All our guests were blown away.',
+    name: 'Mary Grace Hatt',
+    role: '18th Debut Party',
   },
   {
-    quote: "Working with the Sai Decoration team was a dream. They understood our vision instantly and elevated it beyond anything we imagined. The attention to detail is unmatched.",
+    quote: "Mohana did an amazing job for the decor for all our wedding events. She added her own twist to the designs and made it even better than we could've imagined!",
+    name: 'R.T.',
+    role: 'Full Wedding Weekend Decor',
+  },
+  {
+    quote: 'She handled all our family decorations so beautifully. Color coordination and finishing touches truly made the event special. Highly recommend Sai Decoration!',
+    name: 'Nijantha Kanagu',
+    role: 'Family Event Decoration',
+  },
+  {
+    quote: "From our first consultation to the final reveal, the experience was seamless. Mohana truly listens to what you want and then makes it ten times better.",
     name: 'Priya & Arjun Patel',
     role: 'Cultural Wedding Celebration',
   },
   {
-    quote: 'My son\'s Sesame Street birthday was absolutely incredible! The balloon garland, the custom cutouts, and all the themed props — the kids and parents were blown away. Worth every penny.',
+    quote: 'The balloon garland and themed props for my son\'s first birthday were absolutely show-stopping. Every parent at the party was asking who did the decor. Incredible work!',
     name: 'Rebecca Chen',
-    role: 'Themed Birthday Party',
-  },
-  {
-    quote: "The balloon installation for our daughter's first birthday was show-stopping. Sai Decoration created a gorgeous organic arch that became the centrepiece of the entire party. Amazing work!",
-    name: 'Michael Torres',
-    role: 'First Birthday Balloon Decor',
-  },
-  {
-    quote: 'From our first consultation to the final reveal, the experience was seamless. They truly listen to what you want and then make it ten times better.',
-    name: 'Emily & David Larsson',
-    role: 'Intimate Garden Wedding',
+    role: 'First Birthday Party',
   },
 ];
 
