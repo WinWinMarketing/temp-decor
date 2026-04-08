@@ -17,8 +17,10 @@ const navLinkClass =
   class="site-header fixed top-0 inset-x-0 z-50 overflow-visible border-0 transition-transform duration-500 ease-out motion-reduce:transition-none"
   id="site-header"
 >
+  <div class="header-tab-junction" aria-hidden="true"></div>
+
   <div
-    class="relative z-[2] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-0 pb-4 lg:gap-x-8 lg:pb-5 xl:gap-x-12"
+    class="relative z-[2] container grid grid-cols-[1fr_auto_1fr] items-start gap-x-4 pt-0 pb-6 lg:gap-x-8 lg:pb-7 xl:gap-x-12"
   >
     <div
       class="col-start-1 row-start-1 flex min-w-0 self-start h-[3.75rem] lg:h-[4rem] items-center justify-end"
@@ -110,43 +112,60 @@ const navLinkClass =
 <style is:global>
   .site-header {
     --bar-h: 3.75rem;
-    --tab-h: 8rem;
-    --tab-w: 12rem;
-    --tab-br: 1.125rem;
+    --tab-h: 16rem;
+    --tab-w: 18rem;
+    --tab-br: 1.25rem;
   }
 
   @media (min-width: 1024px) {
     .site-header {
       --bar-h: 4rem;
-      --tab-h: 8.75rem;
-      --tab-w: 14rem;
-      --tab-br: 1.25rem;
+      --tab-h: 17.5rem;
+      --tab-w: 22rem;
+      --tab-br: 1.5rem;
     }
   }
 
   /*
-    Tall mark so it reads in the bar and continues into the frosted tab below.
+    ~2x prior sizes: strong presence into the frosted tab.
     global.css sets img { height: auto }; keep explicit heights here.
   */
   .site-header .header-brand-logo {
     width: auto;
-    height: 54px;
-    max-height: 54px;
+    height: 108px;
+    max-height: 108px;
     object-fit: contain;
   }
 
   @media (min-width: 640px) {
     .site-header .header-brand-logo {
-      height: 62px;
-      max-height: 62px;
+      height: 124px;
+      max-height: 124px;
     }
   }
 
   @media (min-width: 1024px) {
     .site-header .header-brand-logo {
-      height: 70px;
-      max-height: 70px;
+      height: 140px;
+      max-height: 140px;
     }
+  }
+
+  /*
+    Solid band (no backdrop-filter) masks the compositing seam where ::before
+    meets ::after; overlap alone is unreliable with blurred layers.
+  */
+  .site-header .header-tab-junction {
+    position: absolute;
+    left: 50%;
+    top: var(--bar-h);
+    transform: translate(-50%, -4px);
+    width: min(var(--tab-w), calc(100vw - 1.5rem));
+    height: 10px;
+    z-index: 1;
+    pointer-events: none;
+    /* Slightly more opaque than bar/tab so the 1-device-pixel gap disappears */
+    background-color: rgb(0 0 0 / 0.88);
   }
 
   /* Top bar only — full width, no clip-path. */
@@ -164,18 +183,15 @@ const navLinkClass =
     -webkit-backdrop-filter: blur(16px);
   }
 
-  /*
-    Logo panel: 1px overlap under the bar hides the subpixel hairline from separate
-    pseudo-elements + backdrop-filter without a visible seam.
-  */
+  /* Logo tab panel (rounded bottom); sits under junction band at the bar edge. */
   .site-header::after {
     content: '';
     position: absolute;
-    top: calc(var(--bar-h) - 1px);
+    top: var(--bar-h);
     left: 50%;
     transform: translateX(-50%);
-    width: var(--tab-w);
-    height: calc(var(--tab-h) + 1px);
+    width: min(var(--tab-w), calc(100vw - 1.5rem));
+    height: var(--tab-h);
     z-index: 0;
     pointer-events: none;
     background-color: rgb(0 0 0 / 0.75);
