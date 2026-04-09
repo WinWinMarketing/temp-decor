@@ -75,11 +75,17 @@ img {
 
 .section-label {
   font-family: var(--font-family-body);
-  font-size: var(--font-size-small);
+  font-size: clamp(0.9375rem, 0.82rem + 0.55vw, 1.125rem);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: var(--color-gold);
+}
+
+.section-heading {
+  font-size: clamp(2.45rem, 1.38rem + 3.75vw, 3.95rem);
+  line-height: 1.07;
+  letter-spacing: -0.02em;
 }
 
 .container {
